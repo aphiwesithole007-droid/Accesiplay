@@ -3,101 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AccessiPay - Accessible Payments</title>
+    <title>Start 7-Day Free Trial</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    <header role="banner" class="header">
-        <div class="container header-content">
-            <div class="logo">
-                <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="8" x2="12" y2="16"></line>
-                    <line x1="8" y1="12" x2="16" y2="12"></line>
-                </svg>
-                <span>AccessiPay</span>
-            </div>
-            <nav aria-label="Main Navigation">
-                <ul class="nav-list">
-                    <li><a href="#" aria-current="page">Home</a></li>
-                    <li><a href="#payment-section">Make a Payment</a></li>
-                    <li><a href="#">Support</a></li>
-                </ul>
-            </nav>
+    <div class="voice-status" id="voice-status" aria-live="polite">
+        <div class="mic-icon" id="mic-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="22"></line>
+            </svg>
         </div>
-    </header>
+        <span id="status-text">Click to enable Voice Control</span>
+    </div>
 
-    <main id="main-content" role="main">
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="container">
-                <h1 id="hero-title">Payments made truly accessible for everyone.</h1>
-                <p class="hero-subtitle">Experience a seamless, screen-reader friendly, and high-contrast payment process designed with inclusivity at its core.</p>
-                <a href="#payment-section" class="button button-primary">Get Started</a>
-            </div>
-        </section>
+    <main id="main-content" role="main" class="container">
+        
+        <div class="content-wrapper" id="form-container">
+            <h1 class="main-title">Start 7-Day Free Trial</h1>
+            <p class="subtitle">Enter card details to begin. You will not be charged today.</p>
+            
+            <div aria-live="polite" id="form-announcer" class="sr-only"></div>
 
-        <section id="payment-section" class="payment-section" aria-labelledby="payment-title">
-            <div class="container form-container">
-                <h2 id="payment-title">Secure Checkout</h2>
-                
-                <div aria-live="polite" id="form-announcer" class="sr-only"></div>
-
-                <form id="payment-form" novalidate>
-                    <div class="form-group">
-                        <label for="amount">Payment Amount ($)</label>
-                        <input type="number" id="amount" name="amount" min="1" step="0.01" required aria-describedby="amount-error">
-                        <span class="error-message" id="amount-error" role="alert"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="card-name">Name on Card</label>
-                        <input type="text" id="card-name" name="card-name" required autocomplete="cc-name" aria-describedby="name-error">
-                        <span class="error-message" id="name-error" role="alert"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="card-number">Card Number</label>
-                        <input type="text" id="card-number" name="card-number" required autocomplete="cc-number" inputmode="numeric" aria-describedby="card-error" placeholder="1234 5678 9101 1121">
-                        <span class="error-message" id="card-error" role="alert"></span>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group half">
-                            <label for="expiry-date">Expiry Date (MM/YY)</label>
-                            <input type="text" id="expiry-date" name="expiry-date" required autocomplete="cc-exp" aria-describedby="expiry-error" placeholder="MM/YY">
-                            <span class="error-message" id="expiry-error" role="alert"></span>
-                        </div>
-                        <div class="form-group half">
-                            <label for="cvv">CVV</label>
-                            <input type="text" id="cvv" name="cvv" required autocomplete="cc-csc" inputmode="numeric" aria-describedby="cvv-error" aria-label="Card Verification Value, 3 or 4 digits" placeholder="123">
-                            <span class="error-message" id="cvv-error" role="alert"></span>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="button button-submit" id="submit-btn">
-                        <span class="btn-text">Pay Now</span>
-                        <span class="spinner" aria-hidden="true" style="display: none;"></span>
-                    </button>
-                </form>
-
-                <div id="success-message" class="success-message" hidden tabindex="-1">
-                    <h3>Payment Successful!</h3>
-                    <p>Thank you for your payment. A receipt has been sent to your registered email.</p>
+            <form id="trial-form" novalidate>
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" name="card-number" required autocomplete="cc-number" inputmode="numeric" placeholder="1234 5678 9101 1121" aria-describedby="card-error">
+                    <span class="error-message" id="card-error" role="alert"></span>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <p>&copy; 2026 AccessiPay. Designed for all.</p>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiry-date">Expiry (MM/YY)</label>
+                        <input type="text" id="expiry-date" name="expiry-date" required autocomplete="cc-exp" placeholder="MM/YY" aria-describedby="expiry-error">
+                        <span class="error-message" id="expiry-error" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" name="cvv" required autocomplete="cc-csc" inputmode="numeric" placeholder="123" aria-describedby="cvv-error">
+                        <span class="error-message" id="cvv-error" role="alert"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" id="submit-btn" class="massive-button">
+                        <span class="btn-text">Start Free Trial</span>
+                    </button>
+                    <p class="voice-hint">Say <strong>"Submit"</strong> or click to start.</p>
+                </div>
+            </form>
         </div>
-    </footer>
+
+        <div id="success-message" class="success-message content-wrapper" hidden tabindex="-1">
+            <div class="success-icon">
+                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h1 class="main-title">Trial Started!</h1>
+            <p class="subtitle">Your 7-day free trial has begun successfully. Welcome aboard.</p>
+            <button class="massive-button secondary" onclick="window.location.reload()">Start Over</button>
+        </div>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
